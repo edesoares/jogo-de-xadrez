@@ -1,6 +1,10 @@
 package app;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 import xadrez.Cor;
+import xadrez.Jogada;
 import xadrez.PecaXadrez;
 
 public class UI {
@@ -24,6 +28,18 @@ public class UI {
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
+	public static Jogada lerJogada(Scanner input) {
+		try {
+			String j = input.nextLine();
+			char coluna = j.charAt(0);
+			int linha = Integer.parseInt(j.substring(1));
+			return new Jogada(coluna, linha);
+		}
+		catch (RuntimeException e) {
+			throw new InputMismatchException("Erro ao ler a jogada. Certifique-se de digitar um valor válido.");
+		}
+	}
+	
 	public static void imprimeTab(PecaXadrez[][] pecas) {
 
 		for (int i = 0; i < pecas.length; i++) {
