@@ -25,10 +25,17 @@ public class Partida {
 		return mat;
 	}
 
+	public boolean [][] movPossiveis(Jogada origem){
+		Posicao pos = origem.lerPosicao();
+		validarPosOrigem(pos);
+		return tabuleiro.peca(pos).movPossiveis();
+	}
+
 	public PecaXadrez moverPeca (Jogada origem, Jogada destino) {
 		Posicao origemDaPeca = origem.lerPosicao();
 		Posicao destinoDaPeca = destino.lerPosicao();
 		validarPosOrigem(origemDaPeca);
+		validarPosDestino(origemDaPeca, destinoDaPeca);
 		Peca capturada = execJogada(origemDaPeca, destinoDaPeca);
 		return (PecaXadrez)capturada;
 	}
@@ -43,6 +50,15 @@ public class Partida {
 	private void validarPosOrigem (Posicao pos) {
 		if (!tabuleiro.temPeca(pos)) {
 			throw new XadrezException("Não existe peça nessa posição");
+		}
+		if (!tabuleiro.peca(pos).temComoMexerEssaPeca()) {
+			throw new XadrezException("Não há movimentos possíveis.");
+		}
+	}
+
+	private void validarPosDestino (Posicao origem, Posicao destino) {
+		if (!tabuleiro.peca(origem).podeMover(destino)) {
+			throw new XadrezException("Não é possível mover essa peça pra essa posição");
 		}
 	}
 

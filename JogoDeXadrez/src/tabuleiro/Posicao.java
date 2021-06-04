@@ -26,6 +26,10 @@ public class Posicao {
 		this.coluna = coluna;
 	}
 
+	public void definirPos(int linha, int coluna) {
+		this.linha = linha;
+		this.coluna = coluna;
+	}
 	@Override
 	public String toString() {
 		return "Linha: " + linha + ", Coluna: " + coluna;
