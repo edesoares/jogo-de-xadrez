@@ -28,7 +28,7 @@ public class Jogada {
 	}
 
 	protected static Jogada computarJogada (Posicao pos) {
-		return new Jogada((char)('a' - pos.getColuna()), 8 - pos.getLinha());
+		return new Jogada((char)('a' + pos.getColuna()), 8 - pos.getLinha());
 	}
 
 	@Override
