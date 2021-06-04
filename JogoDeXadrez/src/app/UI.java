@@ -55,9 +55,13 @@ public class UI {
 		imprimeCapturados(capturadas);
 		System.out.println();
 		System.out.println("Turno: " + partida.getTurno());
-		System.out.println("Esperando movivmento de uma peça: " + partida.getVezDeQuem());
-		if (partida.getXeque()) {
-			System.out.println("O rei está em xeque!");
+		if  (!partida.getXequeMate()) {
+			System.out.println("Esperando movivmento de uma peça: " + partida.getVezDeQuem());
+			if (partida.getXeque()) {
+				System.out.println("O rei está em xeque!");
+			}
+		} else {
+			System.out.println("Xeque mate! Vencedor: " + partida.getVezDeQuem());
 		}
 	}
 	public static void imprimeTab(PecaXadrez[][] pecas) {
