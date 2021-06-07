@@ -37,6 +37,11 @@ public class Application {
 				if(capturada != null) {
 					capturadas.add(capturada);
 				}
+				if (partida.getPromovido() != null) {
+					System.out.println("Pra qual peça vc quer promover (b,c,t,r)?");
+					String tipo = input.nextLine();
+					partida.trocarPromovida(tipo);
+				}
 			}
 			catch (XadrezException e) {
 				System.out.println(e.getMessage());
