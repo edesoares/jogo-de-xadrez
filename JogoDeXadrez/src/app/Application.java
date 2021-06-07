@@ -39,7 +39,11 @@ public class Application {
 				}
 				if (partida.getPromovido() != null) {
 					System.out.println("Pra qual peça vc quer promover (b,c,t,r)?");
-					String tipo = input.nextLine();
+					String tipo = input.nextLine().toLowerCase();
+					while (!tipo.equals("b") && !tipo.equals("c") && !tipo.equals("t") && !tipo.equals("r")) {
+						System.out.println("Valor inválido!! Pra qual peça vc quer promover (b,c,t,r)?");
+						tipo = input.nextLine().toLowerCase();
+					}
 					partida.trocarPromovida(tipo);
 				}
 			}
